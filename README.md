@@ -1,6 +1,6 @@
 # Unwritten Future
 
-__Version 1.0-rc__
+__Version 1.0-rc__  
 _April 7, 2017_
 
 Platform-agnostic HTML5 Boilerplate
