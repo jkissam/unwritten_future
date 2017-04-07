@@ -57,10 +57,8 @@ input[type="image"] { border: 0; outline: invert none medium; }
 input[type="search"] { -webkit-appearance: none; moz-appearance: none; }
 input, select { max-width: 400px; }
 fieldset { margin: 2em 0; border-color: $light-gray; }
-legend { font: 1.3334em $sans-serif; color: #333; border: 1px solid $light-gray; padding: 2px 15px; background: $very-light-gray; }
+legend { font: 1.3334em $sans-serif; color: $very-dark-gray; border: 1px solid $light-gray; padding: 2px 15px; background: $very-light-gray; }
 legend + * { -webkit-margin-top-collapse: separate; }
-.form-type-checkbox label, .form-type-radio label { color: $medium-gray; }
-input.form-checkbox:checked + label, input.form-radio:checked + label { color: $base-text; }
 input[type="submit"], button, a.button {
   background: $very-dark-gray;
   @include border-radius(0);
@@ -74,6 +72,8 @@ input[type="submit"], button, a.button {
 .no-touch input[type="submit"]:hover, .no-touch button:hover, .no-touch a.button:hover {
   background: $dark-gray;
 }
+form ul { list-style: none outside none; margin: 0; }
+form ul li { margin-bottom: 1em; }
 
 // 1.9 pseudo-icons
 .dismiss:before { content: "\00d7"; cursor: pointer; }

@@ -1,5 +1,8 @@
 # Unwritten Future
 
+__Version 1.0-rc__
+_April 7, 2017_
+
 Platform-agnostic HTML5 Boilerplate
 
 Designed to be used as a base for any CMS or single-page app. I am planning to use this to build base themes for Wordpress and Drupal.
