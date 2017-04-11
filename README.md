@@ -1,5 +1,14 @@
 # Unwritten Future
 
+__Version 1.0-rc2__
+_April 11, 2017_
+
+Fixed & added a few things:
+* added `{ margin-bottom: 0; }` to `p:last-of-type` so last paragraph within any given container will have no bottom margin, so it doesn't get added to the container's padding
+* added `p.read-more` class (aligns text to the right)
+* adde `.button-block` class for buttons (submit inputs, buttons and links with "button" class), to create buttons which will display as a block
+* added `-webkit-overflow-scrolling: touch;` to mobile menu, and changed transition from linear to ease, for improved experience on webkit touch devices
+
 __Version 1.0-rc__  
 _April 7, 2017_
 

@@ -14,9 +14,11 @@ h6 { font-size: 1em; font-weight: bold; margin-bottom: 0; }
 
 // 1.3 Text
 p { margin-bottom: 1.3334em; }
+p:last-of-type { margin-bottom: 0; }
 p.leftalign { text-align: left; }
 p.centeralign { text-align: center; }
 p.rightalign { text-align: right; }
+p.read-more { text-align: right; }
 address { font-style: normal; margin-bottom: 1.3334em; }
 blockquote { margin: 0 0 0 2em; margin-bottom: 1.3334em; }
 blockquote p { margin-bottom: 0.6667em; }
@@ -72,6 +74,10 @@ input[type="submit"], button, a.button {
 .no-touch input[type="submit"]:hover, .no-touch button:hover, .no-touch a.button:hover {
   background: $dark-gray;
 }
+
+input[type="submit"].button-block, button.button-block, a.button.button-block { display: block; margin: 0 0 1em; }
+p.read-more a.button.button-block { float: right; margin: 0 0 1em 2em; }
+
 form ul { list-style: none outside none; margin: 0; }
 form ul li { margin-bottom: 1em; }
 
@@ -80,7 +86,7 @@ form ul li { margin-bottom: 1em; }
 
 // iPad in portrait mode or larger //
 @media screen and (min-width: 768px) {
-	.alignleft { float: left; margin: 0 20px 20px 0; max-width: 50%; }
-	.alignright { float: right; margin: 0 0 20px 20px; max-width: 50%; }
+	.alignleft { float: left; margin: 0 1.3334em 1.3334em 0; max-width: 50%; }
+	.alignright { float: right; margin: 0 0 1.3334em 1.3334em; max-width: 50%; }
 	.aligncenter { display: block; width: auto; margin: 0 auto 1.3334em; }
 }
