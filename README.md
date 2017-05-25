@@ -1,17 +1,18 @@
 # Unwritten Future
 
-__Version 1.0-rc3__
+__Version 1.0-rc3__  
 _May 25, 2017_
 
 Added a new `prepareOnThisPage` function to `uwfUtil`, which will create "sections" of `#content` based on the header structure (defaulting to Header 2). This allows content editors to create "sections" of content simply by using the appropriate header element in the HTML, CMS or WYSIWYG. The function creates a menu with links which scroll to the appropriate section of the page, and "Back to top" links at the bottom of each "section."
 
-`prepareOnThisPage` is called automatically by `uwfUtil.init` and configured by properties of the uwfOptions variable:
+`prepareOnThisPage` is called automatically by `uwfUtil.init` and configured by properties of the `uwfOptions` variable:
 * `onThisPageHeading` : header (or other) elements which will be treated as the beginning of a new section inside `#content` (defaults to `h2`)
 * `onThisPageNav` : jQuery selector for container to place on-this-page navigation inside (defaults to `#on-this-page`)
 * `onThisPageMinimumSections` : minimum number of sections that must exist on the page before "on this page" navigation is implemented (defaults to 2)
 * the "Back to top" text is set (and can be configured by modifying) `uwfText.backToTop`
+* also note that `prepareOnThisPage` will _only_ work if `uwfOptions.sectionNavigationSelector` is set, as it relies on `uwfUtil.prepareSectionNavigation`
 
-and few minor fixes:
+This version also contains a few minor fixes:
 * fixed bugs in uwfUtil.scrollToInclude() function
 * fixed bug where some of the javascript for modals used `widget` class instead of `modal`
 * finished removing javascript for "reveals"
@@ -20,7 +21,7 @@ and few minor fixes:
 * added `button-mobile-block` class for buttons that should display as block buttons on mobile, but can display as regular buttons on larger devices
 * made `.button-block` buttons inside `p.read-more` display as block buttons on mobile (continue to float right on larger devices)
 
-__Version 1.0-rc2__
+__Version 1.0-rc2__  
 _April 11, 2017_
 
 Fixed & added a few things:
@@ -29,7 +30,7 @@ Fixed & added a few things:
 * adde `button-block` class for buttons (submit inputs, buttons and links with "button" class), to create buttons which will display as a block
 * added `-webkit-overflow-scrolling: touch;` to mobile menu, and changed transition from linear to ease, for improved experience on webkit touch devices
 
-__Version 1.0-rc__  
+__Version 1.0-rc1__  
 _April 7, 2017_
 
 Platform-agnostic HTML5 Boilerplate
