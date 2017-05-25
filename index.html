@@ -78,8 +78,11 @@
 						<div class="messages">
 							Here is a message
 						</div>
+						<h1>Page Title</h1>
+						<h2>Section 1 - content</h2>
 						<p>{{ content }}</p>
 						<p><a href="#modal-example">Open modal</a></p>
+						<h2 id="section-form">Section 2 - form</h2>
 						<p>Example form:</p>
 						<form>
 							<ul>
@@ -98,11 +101,19 @@
 								<li><input type="submit" value="submit" /></li>
 							</ul>
 						</form>
+						<h2>Section 3 - Scroll to Include</h2>
+						<p><button onclick="uwfUtil.scrollToInclude('#testScrollToInclude'); return true;">Scroll to include following block</button></p>
+						<div id="testScrollToInclude" style="height: 800px; padding: 10px; background: #f5f5f5;">
+							<p>Button above should scroll to include this <code>div</code></p>
+						</div>
 					</div>
 				</div>
 				
 				<div id="secondary" class="clearfix col-xs-12 col-sm-4">
 					<p>{{ sidebar }}</p>
+					<nav id="on-this-page">
+						<h3>On this page</h3>
+					</nav>
 				</div>
 				
 			</div>

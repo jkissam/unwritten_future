@@ -22,7 +22,8 @@
  *   2.2.1 fixFooter
  *   2.2.2 shortenLinks
  *   2.2.3 prepareExternalLinks
- *   2.2.4 prepareSectionNavigation
+ *   2.2.4 prepareOnThisPage
+ *   2.2.5 prepareSectionNavigation
  *  2.3 Helper Functions (available but not called by default)
  *   2.3.1 setCookie
  *   2.3.2 getCookie
@@ -142,6 +143,11 @@ uwfUtil = {
 		if (uwfOptions.externalLinks) {
 			uwfUtil.prepareExternalLinks(uwfOptions.externalLinksExceptions);
 		}
+		
+		// on-this-page navigation
+		if (uwfOptions.onThisPageHeading && uwfOptions.onThisPageNav && uwfOptions.sectionNavigationSelector) {
+			uwfUtil.prepareOnThisPage( uwfOptions.onThisPageHeading, uwfOptions.onThisPageNav, uwfOptions.onThisPageMinimumSections );
+		}
 
 		// section navigation
 		if (uwfOptions.sectionNavigationSelector) {
@@ -227,7 +233,7 @@ uwfUtil = {
 
 		jQuery('#modals-wrapper').click(function(event){
 			var $target = jQuery(event.target);
-			if ( !$target.hasClass('widget') && !$target.closest('.widget').length ) {
+			if ( !$target.hasClass('widget') && !$target.closest('.modal').length ) {
 				uwfUtil.closeModal();
 			}
 		});
@@ -289,41 +295,6 @@ uwfUtil = {
 	closeModal : function() {
 		jQuery('body').removeClass('modal-open');
 		window.setTimeout(function(){ jQuery('#modals .modal').hide().removeClass('open'); jQuery('#modals-wrapper').hide(); }, 1000);
-	},
-
-	// 2.1.7 open reveal
-	openReveal : function(sel, options) {
-		if (sel instanceof jQuery) { $el = sel; } else { $el = jQuery(sel); }
-
-		// only open this if it is a widget in a reveal region, and is not already open
-		if (!$el.closest('.reveal').length || !$el.hasClass('widget')) { return; }
-		if ($el.hasClass('open')) { return; }
-
-		revealClassToAdd = ($el.closest('.reveal').attr('id') == 'reveal-left-wrapper') ? 'reveal-left' : 'reveal-right';
-
-		if (jQuery('body').hasClass('reveal-left') || jQuery('body').hasClass('reveal-right')) {
-			jQuery('body').removeClass('reveal-left reveal-right');
-			setTimeout(function(){
-				jQuery('.reveal .widget').hide();
-				$el.show().addClass('open');
-				jQuery('body').addClass(revealClassToAdd);
-			}, 150);
-		} else {
-			$el.show().addClass('open');
-			jQuery('body').addClass(revealClassToAdd);
-		}
-
-		if (options && options.focusInput && ($el.find('input').length > 0) && jQuery('html').hasClass('no-touch')) {
-			$el.find('input:first').focus();
-		}
-	},
-
-	// 2.1.8 close reveal
-	closeReveal : function() {
-		jQuery('body').removeClass('reveal-left reveal-right');
-		setTimeout(function(){
-			jQuery('.reveal .widget').hide().removeClass('open');
-		}, 150);
 	},
 
 	/**
@@ -389,8 +360,32 @@ uwfUtil = {
 			});
 		});
 	},
+	
+	// 2.2.4 create a navigation structure for the page
+	prepareOnThisPage : function( header, nav, minimumSections ) {
+		if ( jQuery(nav).length < 1 ) { return; }
+		if ( jQuery('#content '+header).length < minimumSections ) { jQuery(nav).hide(); return; }
+		jQuery(nav).append('<ul class="on-this-page-links"/>');
+		var sectionId = '';
+		var sectionText = '';
+		var sectionNavigationClass = uwfOptions.sectionNavigationSelector.substr(1);
+		var sectionNavigationTopLink = '<a class="'+sectionNavigationClass+' section-navigation-top" href="#top">'+uwfText.backToTop+'</a>';
+		jQuery('#site-wrapper').prepend('<div id="top"/>');
+		jQuery('#content '+header).each(function(index){
+			if (jQuery(this).attr('id') && jQuery(this).attr('id').length) {
+				sectionId = jQuery(this).attr('id');
+			} else {
+				sectionId = jQuery(this).text().toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s/g,'-');
+				jQuery(this).attr('id',sectionId);
+			}
+			sectionText = jQuery(this).text();
+			jQuery(nav + ' ul.on-this-page-links').append('<li><a href="#'+sectionId+'" class="'+sectionNavigationClass+'">'+sectionText+'</a></li>');
+			if (index) { jQuery(this).before(sectionNavigationTopLink); }
+		});
+		jQuery('#content').append(sectionNavigationTopLink);
+	},
 
-	// 2.2.4 when elements that match a particular jQuery selector
+	// 2.2.5 when elements that match a particular jQuery selector
 	// and target another element on the page with either href or data-target
 	// are clicked, do an animated scroll to that target, leaving at least (padding) pixels at the top
 	// clickable element can use data-callback to specify a function that should be called upon scroll completion
@@ -526,7 +521,7 @@ uwfUtil = {
 		if (sel instanceof jQuery) { $el = sel; } else { $el = jQuery(sel); }
 		if (isNaN(padding)) { padding = 20; }
 		if (!$el.length || ($el.css('display') == 'none')) { return; }
-		var newTop = $el.offset().top + $el.outerHeight + padding;
+		var newTop = $el.offset().top - padding;
 		if (newTop > jQuery(window).scrollTop()) {
 			jQuery('html, body').stop().animate({
 				scrollTop : newTop
@@ -601,7 +596,10 @@ if (typeof uwfOptions == 'undefined') {
 		externalLinksExceptions : '',
 		sectionNavigationSelector : '.section-navigation',
 		sectionNavigationPadding : 20,
-		mobileBreakPoint : 768
+		mobileBreakPoint : 768,
+		onThisPageHeading : 'h2',
+		onThisPageNav : '#on-this-page',
+		onThisPageMinimumSections : 2
 	}
 }
 
@@ -616,5 +614,6 @@ if (typeof uwfText == 'undefined') {
 		dismissMessage : 'Dismiss message',
 		dismissModal : 'Dismiss modal',
 		opensNewWindow : 'Opens in a new window',
+		backToTop : 'Back to top',
 	}
 }

@@ -30,6 +30,9 @@
 #navigation .main-menu ul li .menu-toggle.closed { border-top-color: $very-dark-gray; }
 #navigation .main-menu ul li .menu-toggle.open { margin-top: 0.2em; border-bottom-color: $very-dark-gray; }
 
+// on-this-page navigation - created by javascript, so hide unless there is javascript
+.no-js #on-this-page { display: none; }
+
 // iPad in portrait mode or larger
 @media screen and (min-width: 768px) {
 
