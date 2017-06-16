@@ -1,5 +1,25 @@
 # Unwritten Future
 
+## Usage notes:
+
+1. In order to be able to apply updates from the basic HTML framework, do not modify screen.scss or any of its component files, or uwfutil.js
+2. For css, create child.scss (and component files as necessary) in the sass folder to generate child.css, and uncomment line 19 in index.html
+3. For javascript, rename script-template.js to script.js and uncomment line 168 in index.html
+4. For google analytics, replace "UA-XXXXX-X" with your site's ID on line 178 of index.html, and then uncomment lines 171-180
+
+## Version Log
+
+__Version 1.0-rc5__
+_June 15, 2017_
+
+* updated to latest version of `hammerjs`
+* fixed bug where prepareNavigation will throw an error if `#navigation .main-menu ul` doesn't exist
+* added usage notes and script-example.js for local script
+
+__Version 1.0-rc4__
+
+* added `width: 100%` to `button-mobile-block` class to make it, um, actually work
+
 __Version 1.0-rc3__  
 _May 25, 2017_
 
@@ -13,7 +33,7 @@ Added a new `prepareOnThisPage` function to `uwfUtil`, which will create "sectio
 * also note that `prepareOnThisPage` will _only_ work if `uwfOptions.sectionNavigationSelector` is set, as it relies on `uwfUtil.prepareSectionNavigation`
 
 This version also contains a few minor fixes:
-* fixed bugs in uwfUtil.scrollToInclude() function
+* fixed bugs in `uwfUtil.scrollToInclude()` function
 * fixed bug where some of the javascript for modals used `widget` class instead of `modal`
 * finished removing javascript for "reveals"
 * changed `p:last-of-type` selector to `p:last-child` to remove bottom margin on last paragraph in a container, so that bottom margin is only removed if there are no other elements after it

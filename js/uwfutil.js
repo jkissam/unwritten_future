@@ -117,7 +117,7 @@ uwfUtil = {
 		// instantiate FastClick (https://github.com/ftlabs/fastclick)
 		FastClick.attach(document.body);
 
-		// set up navigation, messages, and modals/reveals
+		// set up navigation, messages, and modals
 		uwfUtil.prepareNavigation();
 		uwfUtil.prepareMessages();
 		uwfUtil.prepareModals();
@@ -173,14 +173,15 @@ uwfUtil = {
 		});
 		jQuery('.navigation-header').click(function(){
 			jQuery(this).siblings('.main-menu').children('ul').toggleClass('open');
-			if (jQuery(window).width() < uwfOptions.mobileBreakPoint) { uwfUtil.closeReveal(); }
 		});
 		jQuery('.menu-dismiss').click(function(){ jQuery(this).parent('.main-menu ul').toggleClass('open'); });
 
-		var menuHammer = new Hammer(jQuery('#navigation .main-menu > ul')[0]);
-		menuHammer.on('swipeleft', function(event){
-			if (jQuery(window).width() < uwfOptions.mobileBreakPoint) { jQuery('#navigation .main-menu > ul').removeClass('open'); }
-		});
+		if (jQuery('#navigation .main-menu > ul').length) {
+			var menuHammer = new Hammer(jQuery('#navigation .main-menu > ul')[0]);
+			menuHammer.on('panleft', function(event){
+				if (jQuery(window).width() < uwfOptions.mobileBreakPoint) { jQuery('#navigation .main-menu > ul').removeClass('open'); }
+			});
+		}
 
 		jQuery('#site-wrapper').click(function(event){
 			var $target = jQuery(event.target);
@@ -205,20 +206,18 @@ uwfUtil = {
 	},
 
 	/**
-	 * 2.1.4 prepares modals and reveals
+	 * 2.1.4 prepares modals
 	 *
 	 * any a element which links to the id of a widget in the modal region will automatically open that widget as a modal
-	 * any a element which links to the id of a widget in a reveal region will automatically open that widget as a reveal
-	 * or any (clickable) element can be given the class "modal-trigger" or "reveal-trigger" and attribute "data-target"
-	 * which targets a widget in the modal region, or a reveal region
-	 * if the element has the attribute "data-modal-options" or "data-reveal-options" it will be parsed as a comma-separated list,
+	 * or any (clickable) element can be given the class "modal-trigger" and attribute "data-target"
+	 * which targets a widget in the modal region
+	 * if the element has the attribute "data-modal-options" it will be parsed as a comma-separated list,
 	 * and each element will be added to the options object with a "true" flag
 	 * i.e., data-modal-options="list,of,options" will result in options = { list:true, of:true, options:true }
 	 *
 	 * the following functions can also be called programmatically:
 	 * - uwfUtil.openModal(selector, options)
-	 * - uwfUtil.openReveal(selector, options)
-	 * selector must be either a jQuery object or selector referring to a widget in the modal or reveal regions
+	 * selector must be either a jQuery object or selector referring to a widget in the modal regions
 	 * options should be a javascript object
 	 * currently the only meaningful option is { focusInput : true }, which auto-focuses on the first text input in the widget
 	 */
