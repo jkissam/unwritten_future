@@ -51,6 +51,7 @@ _June 15, 2017_
 * improved display of checkboxes, radio buttons & selects on webkit browsers on Macs
 * changed navigation so that display of "mobile" vs. "full" menu is controlled by `uwfOptions.mobileBreakPoint` instead of hard-wired css selectors
 * added line-height to `input[type="submit"]` elements so they are the same height as `button` and `a.button` elements
+* moved modal-dismiss buttons into modal divs and added "[ESC]" text to them on non-touch devices
 
 ### Version 1.0-rc5
 _June 15, 2017_
