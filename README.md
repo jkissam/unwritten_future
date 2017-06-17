@@ -20,6 +20,7 @@ Javascript/CSS functionality includes:
 
 Additional optional Javascript functionality:
 
+* create on-the-fly "on this page" navigation based on `h2` elements (or any other selector, as set in `uwfOptions.onThisPageHeading`) in `#content` section
 * shorten links that are wider than their parents (i.e., when long URLs are used as the link text, which can break mobile layouts)
 * open links to external URLs in a new window, optionally excluding by jQuery selectors
 * make links to anchors in the same page scroll rather than jump (do this by adding a class)

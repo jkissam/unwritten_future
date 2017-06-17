@@ -235,6 +235,9 @@ uwfUtil = {
 	 */
 	prepareModals : function() {
 		
+		jQuery('.modal').each(function(){
+			jQuery(this).prepend('<div class="dismiss modal-dismiss primary"><span class="key">[ESC]</span></div>')
+		});
 		jQuery('.modal-dismiss').attr('title',uwfText.dismissModal)
 
 		jQuery('.modal-dismiss').click(function(event){
@@ -381,7 +384,9 @@ uwfUtil = {
 		var sectionText = '';
 		var sectionNavigationClass = uwfOptions.sectionNavigationSelector.substr(1);
 		var sectionNavigationTopLink = '<a class="'+sectionNavigationClass+' section-navigation-top" href="#top">'+uwfText.backToTop+'</a>';
-		jQuery('#site-wrapper').prepend('<div id="top"/>');
+		if (!jQuery('#top').length) {
+			jQuery('#site-wrapper').prepend('<div id="top"/>');
+		}
 		jQuery('#content '+header).each(function(index){
 			if (jQuery(this).attr('id') && jQuery(this).attr('id').length) {
 				sectionId = jQuery(this).attr('id');
