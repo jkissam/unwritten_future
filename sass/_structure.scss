@@ -1,47 +1,6 @@
 html, body { height: 100%; }
 .chromeframe { margin: 0.2em 0; background: $light-gray; color: $base-text; padding: 0.2em 0; }
 
-/* large-scale structure */
-
-
-
-// iPad in portrait mode or larger
-@media screen and (min-width: 768px) {
-	#main-wrapper { padding-top: 20px; }
-	
-	#utility-wrapper { position: absolute; top: 0; left: 0; right: 0; }
-	#utility { position: relative; }
-	#utility-inner { position: absolute; top: 20px; right: 20px; }
-}
-
-/* Assistive text */
-
-.screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute;
-}
-
-.screen-reader-text:focus {
-	background-color: #f1f1f1;
-	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto;
-	color: #21759b;
-	display: block;
-	font-size: 14px;
-	font-weight: bold;
-	height: auto;
-	line-height: normal;
-	padding: 15px 23px 14px;
-	position: absolute;
-	left: 5px;
-	top: 5px;
-	text-decoration: none;
-	text-transform: none;
-	width: auto;
-	z-index: 100000; /* Above WP toolbar */
-}
-
 /* simple clearfix */
 
 .clearfix:before, .clearfix:after {
@@ -49,4 +8,40 @@ html, body { height: 100%; }
 	display: table;
 	clear: both;
 }
+
+// header
+
+#header { padding-top: 10px; }
+.menu-mobile #header { padding-top: 50px; }
+#header #logo { display: block; width: 225px; }
+#header #logo img { display: block; }
+#header .site-name { margin-bottom: 10px; }
+#header .site-slogan { margin-bottom: 10px; }
+
+// content
+
+.messages { border: 1px solid $light-gray; @include border-radius(5px); padding: 10px; margin-bottom: 1.3334em; }
+.messages .dismiss { float: right; font-size: 2em; margin-left: 1em; }
+
+// footers
+
+#footer-wrapper.fixed { position: fixed; left: 0; right: 0; bottom: 0; }
+
+// iPad in portrait mode or larger
+@media screen and (min-width: 768px) {
+	#main-wrapper { padding-top: 20px; }
+	
+	#header { padding-top: 20px; padding-bottom: 20px; }
+	#header #logo { float: left; margin-right: 20px; }
+	#header .site-name { margin-bottom: 0; }
+	#header .site-slogan { margin-bottom: 0; }
+	
+	#utility-wrapper { position: absolute; top: 0; left: 0; right: 0; }
+	#utility { position: relative; }
+	#utility-inner { position: absolute; top: 20px; right: 20px; }
+}
+
+
+
+
 

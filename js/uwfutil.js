@@ -13,11 +13,12 @@
  * 2. uwfUtil object definition
  *  2.1 Default Base Functions
  *   2.1.1 init
- *   2.1.2 prepareNavigation
- *   2.1.3 prepareMessages
- *   2.1.4 prepareModals
- *   2.1.5 openModal
- *   2.1.6 closeModal
+ *   2.1.2 addMenuClass
+ *   2.1.3 prepareNavigation
+ *   2.1.4 prepareMessages
+ *   2.1.5 prepareModals
+ *   2.1.6 openModal
+ *   2.1.7 closeModal
  *  2.2 Optional Functions (controlled by uwfOptions, which can be set in this file or set by CMS)
  *   2.2.1 fixFooter
  *   2.2.2 shortenLinks
@@ -118,6 +119,7 @@ uwfUtil = {
 		FastClick.attach(document.body);
 
 		// set up navigation, messages, and modals
+		uwfUtil.addMenuClass();
 		uwfUtil.prepareNavigation();
 		uwfUtil.prepareMessages();
 		uwfUtil.prepareModals();
@@ -154,8 +156,18 @@ uwfUtil = {
 			uwfUtil.prepareSectionNavigation(uwfOptions.sectionNavigationSelector, uwfOptions.sectionNavigationPadding);
 		}
 	},
+	
+	// 2.1.2 add menu class based on mobile break point
+	addMenuClass : function() {
+		jQuery('body').removeClass('menu-mobile menu-full');
+		if (jQuery(window).width() < uwfOptions.mobileBreakPoint) {
+			jQuery('body').addClass('menu-mobile');
+		} else {
+			jQuery('body').addClass('menu-full');
+		}
+	},
 
-	// 2.1.2 javascript for mobile and drop-down navigation
+	// 2.1.3 javascript for mobile and drop-down navigation
 	prepareNavigation : function(container) {
 		jQuery('#navigation .main-menu > ul').append('<li class="dismiss menu-dismiss" title="'+uwfText.dismissMenu+'"></li>');
 		jQuery('#navigation .main-menu ul li ul').before('<span class="menu-toggle closed" title="'+uwfText.openSubmenu+'"></span>');
@@ -195,7 +207,7 @@ uwfUtil = {
 		});
 	},
 
-	// 2.1.3 make messages dismissable
+	// 2.1.4 make messages dismissable
 	prepareMessages : function() {
 		jQuery('.messages').each(function(){
 			if (jQuery(this).children('.dismiss').length < 1) {
@@ -206,7 +218,7 @@ uwfUtil = {
 	},
 
 	/**
-	 * 2.1.4 prepares modals
+	 * 2.1.5 prepares modals
 	 *
 	 * any a element which links to the id of a widget in the modal region will automatically open that widget as a modal
 	 * or any (clickable) element can be given the class "modal-trigger" and attribute "data-target"
@@ -272,7 +284,7 @@ uwfUtil = {
 		});
 	},
 
-	// 2.1.5 open modal
+	// 2.1.6 open modal
 	openModal : function(sel, options) {
 		if (sel instanceof jQuery) { $el = sel; } else { $el = jQuery(sel); }
 
@@ -290,7 +302,7 @@ uwfUtil = {
 		}
 	},
 
-	// 2.1.6 close modal
+	// 2.1.7 close modal
 	closeModal : function() {
 		jQuery('body').removeClass('modal-open');
 		window.setTimeout(function(){ jQuery('#modals .modal').hide().removeClass('open'); jQuery('#modals-wrapper').hide(); }, 1000);
@@ -573,6 +585,7 @@ jQuery(document).ajaxComplete(function() {
  * 3.4 jQuery(window).smartresize()
  */
 jQuery(window).smartresize(function(){
+	uwfUtil.addMenuClass();
 	if (uwfOptions.fixFooter) { uwfUtil.fixFooter(); }
 	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks(); }
 });
