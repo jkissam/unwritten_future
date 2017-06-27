@@ -138,7 +138,7 @@ uwfUtil = {
 
 		// shorten links
 		if (uwfOptions.shortenLinks) {
-			uwfUtil.shortenLinks();
+			uwfUtil.shortenLinks( uwfOptions.shortenLinksSelector );
 		}
 
 		// external links
@@ -329,20 +329,28 @@ uwfUtil = {
 		}
 	},
 
-	// 2.2.2 finds links which contain URLs longer than their parent containers
+	// 2.2.2 find links whose text are URLs which force them to be wider than their parent containers
 	// and replaces their inner text with shortened versions of the URL, or "(link)"
-	shortenLinks : function() {
-		jQuery('a').each(function(){
+	shortenLinks : function( selector ) {
+		if (!selector || !selector.length) { selector = 'a'; }
+		jQuery( selector ).each(function(){
+			
+			// don't shorten links inside of buttons
+			if (jQuery(this).hasClass('button')) { return; }
+			
 			if (jQuery(this).width() > jQuery(this).parent().width()) {
 
 				href = jQuery(this).attr('href');
-				linktext = jQuery(this).text();
-				regex = /(https?:\/\/)?([a-zA-Z0-9\-\.]+)\/\S*/;
+				linktext = jQuery(this).text().trim();
+				regex = /(https?:\/\/)?([a-zA-Z0-9\-\.]+)(\/\S*)?/;
 				isUrl = regex.exec(linktext);
 				if (isUrl !== null && isUrl.length) {
 					url = regex.exec(href);
 					if ((url !== null) && (url.length > 3) && url[2]) {
-						jQuery(this).text('('+url[2]+')');
+						jQuery(this).text(url[2]);
+						if (jQuery(this).width() > jQuery(this).parent().width()) {
+							jQuery(this).text('(link)');
+						}
 					} else {
 						jQuery(this).text('(link)');
 					}
@@ -574,7 +582,7 @@ jQuery(document).ready(function($){
  */
 jQuery(window).load(function(){
 	if (uwfOptions.fixFooter) { uwfUtil.fixFooter(); }
-	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks(); }
+	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks( uwfOptions.shortenLinksSelector ); }
 });
 
 /**
@@ -583,7 +591,7 @@ jQuery(window).load(function(){
 jQuery(document).ajaxComplete(function() {
 	uwfUtil.prepareMessages();
 	if (uwfOptions.fixFooter) { uwfUtil.fixFooter(); }
-	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks(); }
+	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks( uwfOptions.shortenLinksSelector ); }
 });
 
 /**
@@ -592,7 +600,7 @@ jQuery(document).ajaxComplete(function() {
 jQuery(window).smartresize(function(){
 	uwfUtil.addMenuClass();
 	if (uwfOptions.fixFooter) { uwfUtil.fixFooter(); }
-	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks(); }
+	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks( uwfOptions.shortenLinksSelector ); }
 });
 
 /**
@@ -609,6 +617,7 @@ if (typeof uwfOptions == 'undefined') {
 		validateForms : true,
 		fixFooter : true,
 		shortenLinks : true,
+		shortenLinksSelector : 'a',
 		externalLinks : true,
 		externalLinksExceptions : '',
 		sectionNavigationSelector : '.section-navigation',

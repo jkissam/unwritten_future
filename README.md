@@ -44,6 +44,15 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
+### Version 1.0-rc7
+_June 27, 2017_
+
+* cleaned up a few duplicatations in `_elements.scss`
+* made `a.button` elements display as `inline-block`
+* improvements to `uwfUtil.shortenLinks`
+* added `uwfOptions.shortenLinksSelector` option, which defaults to `a` but can be modified to limit link-shortening
+* added `print.css` which only prints header and main content, prints text as black, and increases text side on the content
+
 ### Version 1.0-rc6
 _June 15, 2017_
 
