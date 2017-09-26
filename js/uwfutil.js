@@ -320,6 +320,7 @@ uwfUtil = {
 	// 2.2.1 fixes footer to bottom of the window if the page content is not long enough
 	fixFooter : function() {
 		var $footer = jQuery('#footer-wrapper');
+		if (!$footer.length) { return; }
 		var heightOfPage = jQuery(window).height();
 		var bottomOfFooter = $footer.offset().top + $footer.outerHeight();
 		if ($footer.hasClass('fixed')) {

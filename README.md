@@ -37,12 +37,18 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Usage notes:
 
-1. In order to be able to apply updates from the basic HTML framework, do not modify screen.scss or any of its component files, or uwfutil.js
+1. In order to be able to apply updates from the basic HTML framework, do not modify screen.scss, any of its component files, or uwfutil.js
 2. For css, create child.scss (and component files as necessary) in the sass folder to generate child.css, and uncomment line 19 in index.html
 3. For javascript, rename script-template.js to script.js and uncomment line 168 in index.html
 4. For google analytics, replace "UA-XXXXX-X" with your site's ID on line 178 of index.html, and then uncomment lines 171-180
 
 ## Version Log
+
+### Version 1.0-rc8 ##
+_September 26, 2017_
+
+* replaced css-only navigation icon with inline svg
+* added test in `uwfUtil.fixFooter` so it doesn't throw an error if the footer HTML has been removed but `uwfOptions.fixFooter` is still set to true
 
 ### Version 1.0-rc7
 _June 27, 2017_

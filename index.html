@@ -46,7 +46,14 @@
 	<div id="navigation-wrapper" class="section-wrapper">
 		<nav id="navigation" class="site-navigation primary-navigation section clearfix container" role="navigation">
 			<div id="navigation-inner" class="section-inner">
-				<h2 class="navigation-header"><i class="icon navigation-icon"></i>{{ navigation_title }}</h2>
+				<h2 class="navigation-header">
+					<svg class="icon navigation-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+						<rect x="0" y="5" width="100" height="20"/>
+						<rect x="0" y="40" width="100" height="20"/>
+						<rect x="0" y="75" width="100" height="20"/>
+					</svg>
+					<span>{{ navigation_title }}</span>
+				</h2>
 				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
 				<div class="main-menu">
 					<ul id="menu-main-menu" class="main-menu">

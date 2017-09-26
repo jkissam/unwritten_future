@@ -128,9 +128,7 @@ form ul li { margin-bottom: 1em; }
 // 1.8.1 pseudo-icons
 
 .dismiss:before { content: "\00d7"; cursor: pointer; }
-.navigation-icon { float: left; display: block; width: 1em; height: 0; margin-top: 0.53334em; margin-right: 0.3334em; position: relative; border-top: 0.2em solid $very-dark-gray; }
-.navigation-icon:before { content: ''; display: block; width: 1em; height: 0em; border-top: 0.2em solid $very-dark-gray; position: absolute; top: -0.53334em; }
-.navigation-icon:after { content: ''; display: block; width: 1em; height: 0em; border-top: 0.2em solid $very-dark-gray; position: absolute; top: 0.13334em; }
+.navigation-icon { width: 1em; vertical-align: middle; fill: $base-text; }
 
 // 1.8.2 Assistive text
 
