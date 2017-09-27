@@ -350,10 +350,10 @@ uwfUtil = {
 					if ((url !== null) && (url.length > 3) && url[2]) {
 						jQuery(this).text(url[2]);
 						if (jQuery(this).width() > jQuery(this).parent().width()) {
-							jQuery(this).text('(link)');
+							jQuery(this).text(uwfText.link);
 						}
 					} else {
-						jQuery(this).text('(link)');
+						jQuery(this).text(uwfText.link);
 					}
 				}
 
@@ -642,5 +642,6 @@ if (typeof uwfText == 'undefined') {
 		dismissModal : 'Dismiss modal',
 		opensNewWindow : 'Opens in a new window',
 		backToTop : 'Back to top',
+		link : '(link)',
 	}
 }
