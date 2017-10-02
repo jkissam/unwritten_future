@@ -169,6 +169,7 @@ uwfUtil = {
 
 	// 2.1.3 javascript for mobile and drop-down navigation
 	prepareNavigation : function(container) {
+		jQuery('body').addClass('menu-mobile-'+uwfOptions.mobileMenuDirection);
 		jQuery('#navigation .main-menu > ul').append('<li class="dismiss menu-dismiss" title="'+uwfText.dismissMenu+'"></li>');
 		jQuery('#navigation .main-menu ul li ul').before('<span class="menu-toggle closed" title="'+uwfText.openSubmenu+'"></span>');
 		jQuery('#navigation .menu-toggle').click(function(){
@@ -190,7 +191,7 @@ uwfUtil = {
 
 		if (jQuery('#navigation .main-menu > ul').length) {
 			var menuHammer = new Hammer(jQuery('#navigation .main-menu > ul')[0]);
-			menuHammer.on('panleft', function(event){
+			menuHammer.on('pan'+uwfOptions.mobileMenuDirection, function(event){
 				if (jQuery(window).width() < uwfOptions.mobileBreakPoint) { jQuery('#navigation .main-menu > ul').removeClass('open'); }
 			});
 		}
@@ -624,6 +625,7 @@ if (typeof uwfOptions == 'undefined') {
 		sectionNavigationSelector : '.section-navigation',
 		sectionNavigationPadding : 20,
 		mobileBreakPoint : 768,
+		mobileMenuDirection: 'left',
 		onThisPageHeading : 'h2',
 		onThisPageNav : '#on-this-page',
 		onThisPageMinimumSections : 2

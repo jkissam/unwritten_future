@@ -26,10 +26,14 @@
 // mobile menu
 .menu-mobile #navigation { position: absolute; top: 0; left: 0; right: 0; }
 .menu-mobile .navigation-header { display: block; cursor: pointer; }
-.menu-mobile #navigation .main-menu > ul { font-size: 1.6em; z-index: 500; position: fixed; width: 300px; overflow-x: hidden; overflow-y: auto; top: 0; bottom: 0; left: -300px; @include transition-property(left); @include transition-duration(0.15s); @include transition-timing-function(ease); padding-top: 40px; -webkit-overflow-scrolling: touch; }
-.menu-mobile #navigation .main-menu > ul.open { left: 0; }
+.menu-mobile #navigation .main-menu > ul { font-size: 1.6em; z-index: 500; position: fixed; width: 300px; overflow-x: hidden; overflow-y: auto; top: 0; bottom: 0; @include transition-duration(0.15s); @include transition-timing-function(ease); padding-top: 40px; -webkit-overflow-scrolling: touch; }
 .menu-mobile #navigation .main-menu ul li { border-bottom: 1px solid $light-gray; }
 .menu-mobile #navigation .main-menu ul li.menu-dismiss { display: block; position: absolute; top: 15px; right: 15px; font-size: 2em; cursor: pointer; border-bottom: none; }
+
+.menu-mobile-left #navigation .main-menu > ul { left: -300px; @include transition-property(left); }
+.menu-mobile-left #navigation .main-menu > ul.open { left: 0; }
+.menu-mobile-right #navigation .main-menu > ul { right: -300px; @include transition-property(right); }
+.menu-mobile-right #navigation .main-menu > ul.open { right: 0; }
 
 // full menu
 .menu-full #navigation .main-menu > ul { width: 100%; height: 3em; }

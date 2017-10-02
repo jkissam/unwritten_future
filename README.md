@@ -44,13 +44,18 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
-### Version 1.0-rc9 ##
+### Version 1-0 ###
+_October 2, 2017_
+
+* added option `uwfOptions.mobileMenuDirection` to `uwfutil.js` to set direction of mobile menu (slides in from right or left). Could also be set to 'up' or 'down' if you add custom css to handle the transitions (see `_navigation.scss` lines 34-37, but you would also need to give `.menu-mobile #navigation .main-menu > ul` an absolute height, remove the absolute width, etc.).
+
+### Version 1.0-rc9
 _September 27, 2017_
 
 * updated `uwfutil.js` to translate text for '(link)'
 * created `child-template.scss` as a template for child.scss to indicate all color and font styles that might need to be changed in a child theme
 
-### Version 1.0-rc8 ##
+### Version 1.0-rc8
 _September 26, 2017_
 
 * replaced css-only navigation icon with inline svg
