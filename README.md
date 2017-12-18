@@ -2,7 +2,7 @@
 
 Platform-agnostic HTML5 Boilerplate
 
-Designed to be used as a base for any CMS or single-page app. I am planning to use this to build base themes for Wordpress and Drupal.
+Designed to be used as a base for any CMS or single-page app. Used as the basis of the [Unwritten Future Wordpress Base Theme](https://github.com/jkissam/uwf-wp). I am also planning to build an Unwritten Future base theme for Drupal.
 
 Built-in CSS includes:
 
@@ -17,6 +17,7 @@ Javascript/CSS functionality includes:
 * Dismissable messages
 * Modals, which are openable by linking to their ids or programatically through Javascript
 * Option to fix footer to the bottom of the page when content doesn't push it that far
+* adding the `uwf-input-label` class to an `input` or `textarea` element, or to any parent of an input or textarea element, will display the label over the element (i.e., like a placeholder), but use css transitions to move it to smaller text immediately above the input. Will not affect checkbox, radio or submit input types
 
 Additional optional Javascript functionality:
 
@@ -44,7 +45,13 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
-### Version 1-0 ###
+### Version 1.1 ###
+_December 18, 2017_
+
+* added `uwf-input-label` class
+* added jquery to /js/vendor so framework can be used for development in situations without access to the web
+
+### Version 1.0 ###
 _October 2, 2017_
 
 * added option `uwfOptions.mobileMenuDirection` to `uwfutil.js` to set direction of mobile menu (slides in from right or left). Could also be set to 'up' or 'down' if you add custom css to handle the transitions (see `_navigation.scss` lines 34-37, but you would also need to give `.menu-mobile #navigation .main-menu > ul` an absolute height, remove the absolute width, etc.).
