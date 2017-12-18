@@ -17,7 +17,7 @@ Javascript/CSS functionality includes:
 * Dismissable messages
 * Modals, which are openable by linking to their ids or programatically through Javascript
 * Option to fix footer to the bottom of the page when content doesn't push it that far
-* adding the `uwf-input-label` class to an `input` or `textarea` element, or to any parent of an input or textarea element, will display the label over the element (i.e., like a placeholder), but use css transitions to move it to smaller text immediately above the input. Will not affect checkbox, radio or submit input types
+* adding the `uwf-input-label` class to an `input` or `textarea` element, or to any parent of an input or textarea element, will display the label over the element (i.e., like a placeholder), but use css transitions to move it to smaller text immediately above the input when the input/textarea has focus or content. Will not affect checkbox, radio or submit input types
 
 Additional optional Javascript functionality:
 
