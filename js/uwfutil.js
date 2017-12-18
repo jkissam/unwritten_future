@@ -326,7 +326,7 @@ uwfUtil = {
 			});
 			$self.blur(function(){
 				var id = $self.attr('id');
-				jQuery('label[for="'+id+'"]').removeClass('uwf-focused');
+				if (!$self.val().length) { jQuery('label[for="'+id+'"]').removeClass('uwf-focused'); }
 			});
 		});
 	},
