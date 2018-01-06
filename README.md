@@ -45,13 +45,24 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
-### Version 1.1 ###
+### Version 1.1.2
+_January 6, 2018_
+
+* changed `prepareNavigaion` so only one drop-down menu can be open at a time
+* changed `prepareSectionNavigation` so that it _won't_ attempt to scroll to non-existent ids, but _will_ recognize anchors (i.e., `<a name="some-id"></a>`)
+
+### Version 1.1.1
+_December 24, 2017_
+
+* fixed `uwf-input-label` class to deal with instances where input is pre-filled
+
+### Version 1.1
 _December 18, 2017_
 
 * added `uwf-input-label` class
 * added jquery to /js/vendor so framework can be used for development in situations without access to the web
 
-### Version 1.0 ###
+### Version 1.0
 _October 2, 2017_
 
 * added option `uwfOptions.mobileMenuDirection` to `uwfutil.js` to set direction of mobile menu (slides in from right or left). Could also be set to 'up' or 'down' if you add custom css to handle the transitions (see `_navigation.scss` lines 34-37, but you would also need to give `.menu-mobile #navigation .main-menu > ul` an absolute height, remove the absolute width, etc.).
