@@ -45,10 +45,21 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
+### Version 1.1.3
+_July 20, 2018_
+
+A number of updates in preparation for the unwritten_future Drupal theme:
+
+* made a couple of changes to `prepareOnThisPage`:
+    1. it will now use the _class_ `on-this-page` as well as the _id_ to find elements to populate with the menu (so you can populate multiple elements). This can be changed in `uwfOptions`
+    2. new `uwfOptions.onThisPageContent` option controls what element to _search_ for headers
+    3. new `on-this-page-mobile` class will place the links in a modal-like menu which is opened when any element inside the `on-this-page-mobile` element with the class of `on-this-page-mobile-trigger` is clicked (_Note:_ the developer will need to create the trigger element, and also add any classes and css media queries to make this type of menu appear/disappear if you only want to use it for mobile devices)
+* `prepareNavigation` now adds `has-open-submenu` class to `#navigation-wrapper` when there is an open submenu
+
 ### Version 1.1.2
 _January 6, 2018_
 
-* changed `prepareNavigaion` so only one drop-down menu can be open at a time
+* changed `prepareNavigation` so only one drop-down menu can be open at a time
 * changed `prepareSectionNavigation` so that it _won't_ attempt to scroll to non-existent ids, but _will_ recognize anchors (i.e., `<a name="some-id"></a>`)
 
 ### Version 1.1.1
