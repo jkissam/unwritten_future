@@ -45,6 +45,11 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
+### Version 1.1.4
+_December 15, 2018_
+
+* Fixed bug in `uwfUtil.shortenLinks` that triggered link shortening when the link is enclosed within an inline element (rewrote to find the closest non-inline element to compare the width to, instead of just using the immediate parent)
+
 ### Version 1.1.3
 _July 20, 2018_
 
