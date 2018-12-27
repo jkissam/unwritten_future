@@ -45,6 +45,18 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
+### Version 1.2
+_December 27, 2018_
+
+* Adds `uwfUtil.fixOnMaxScroll` function to "fix" any arbitrary element so that it will not scroll off the page entirely (but will scroll if its height is greater than the window height). Takes four arguments:
+  * `sel` : jQuery selector for element
+  * `maxScroll` : controls the maximum amount at the bottom (increase this to leave space for a footer).
+  * `breakPoint` : Only implemented when window width is greater than this number (defaults to 768, assuming we don't want this behavior on "xs" devices)
+  * `maxTop` : controls maximum amount at the top (increase this to leave space for a fixed header/navigation)
+* Adds `uwfOptions` to apply `fixOnMaxScroll` to the `#secondary` column: `fixSecondary` (boolean), `fixSecondaryMax` (integer), `fixSecondaryBreakPoint` (integer), and `fixSecondaryTop` (integer)
+* Adds `uwfUtil.registerGAevent` function as a wrapper for Google Analytics' `ga.send`
+* Updates css for fieldsets and legends to a more flat look
+
 ### Version 1.1.4
 _December 15, 2018_
 
