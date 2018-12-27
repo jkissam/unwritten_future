@@ -41,8 +41,8 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 1. In order to be able to apply updates from the basic HTML framework, do not modify screen.scss, any of its component files, or uwfutil.js
 2. For css, rename child-template.scss to child.scss (and create component files as necessary) in the sass folder to generate child.css, and uncomment line 19 in index.html
-3. For javascript, rename script-template.js to script.js and uncomment line 168 in index.html
-4. For google analytics, replace "UA-XXXXX-X" with your site's ID on line 178 of index.html, and then uncomment lines 171-180
+3. For javascript, rename script-template.js to script.js and uncomment line 201 in index.html
+4. For google analytics, replace "UA-XXXXX-X" with your site's ID on line 211 of index.html, and then uncomment lines 204-213
 
 ## Version Log
 
