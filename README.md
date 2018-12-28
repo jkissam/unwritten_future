@@ -46,6 +46,11 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
+### Version 1.2.1
+_December 28, 2018_
+
+* Added `jQuery(window).trigger('resize')` to `uwfUtil.prepareOnThisPage` so that any additional height created by on this page navigation is taken into account by scripts that fix elements based on scrolling
+
 ### Version 1.2
 _December 27, 2018_
 

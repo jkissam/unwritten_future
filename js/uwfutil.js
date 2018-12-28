@@ -457,7 +457,7 @@ uwfUtil = {
 			if (index) { jQuery(this).before(sectionNavigationTopLink); }
 		});
 		jQuery(contentSelector).append(sectionNavigationTopLink);
-        
+        jQuery(window).trigger('resize');
         
         jQuery('.on-this-page-mobile .on-this-page-links').prepend('<li class="dismiss menu-dismiss" title="Dismiss menu"></li>');
         jQuery('.on-this-page-mobile .on-this-page-mobile-trigger').click(function(){
