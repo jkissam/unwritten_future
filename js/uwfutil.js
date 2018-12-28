@@ -44,7 +44,6 @@
  *  3.2 jQuery(window).load
  *  3.3 jQuery(document).ajaxComplete
  *  3.4 jQuery(window).smartResize
- *  3.5 jQuery(document).bind('uwfResize')
  * 4. uwfOptions and uwfText (configuration options & text for internationalization/localization)
  *  4.1 uwfOptions
  *  4.2 uwfText
@@ -467,8 +466,6 @@ uwfUtil = {
         jQuery('.on-this-page-mobile .on-this-page-links .dismiss, .on-this-page-mobile .on-this-page-links a').click(function(){
             jQuery(this).closest('.on-this-page-links').removeClass('open');
         });
-        
-        jQuery(document).trigger('uwfResize');
 	},
 
 	// 2.2.5 when elements that match a particular jQuery selector
@@ -785,17 +782,6 @@ jQuery(window).smartresize(function(){
 	if (uwfOptions.fixFooter) { uwfUtil.fixFooter(); }
 	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks( uwfOptions.shortenLinksSelector ); }
 });
-
-/**
- * 3.5 jQuery(document).bind('uwfResize')
- * custom event that can be called when content is added (or removed) programatically
- * that might resize the document (e.g., from adding On This Page navigation)
- */
-jQuery(document).bind('uwfResize',function(){
-	if (uwfOptions.fixFooter) { uwfUtil.fixFooter(); }
-	if (uwfOptions.shortenLinks) { uwfUtil.shortenLinks( uwfOptions.shortenLinksSelector ); }
-});
-
 
 /**
  * 4. uwfOptions and uwfText
