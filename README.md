@@ -46,6 +46,12 @@ Javascript behavior can be configured through the `uwfOptions` object, and all t
 
 ## Version Log
 
+### Version 1.2.2
+_January 24, 2019_
+
+* Updated `uwfUtil.prepareNavigation` so that when mobile menu is closed, all submenus are also closed
+* Fixed bug in `uwfUtil.init` that was throwing a Javascript error when `uwfOptions.fixSecondary` was set to true but `#secondary` didn't exist in the DOM
+
 ### Version 1.2.1
 _December 28, 2018_
 
